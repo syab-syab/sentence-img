@@ -5,7 +5,7 @@ import html2canvas from 'html2canvas'
 const Wrapper = styled.div`
   background: #F0EBE3;
   padding: 5rem 40rem;
-  height: 90vh;
+  height: auto;
   @media (max-width: 1100px) {
     padding: 5rem 30rem;
   }
@@ -26,6 +26,12 @@ const Wrapper = styled.div`
   }
 `
 
+const SubWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  height: 90vh;
+`
+
 const TextArea = styled.textarea`
   font-size: 2rem;
   width: 100%;
@@ -33,6 +39,7 @@ const TextArea = styled.textarea`
   border: 0.3rem solid black;
   border-radius: 1rem;
   resize: none;
+  padding: 1rem;
 `
 
 const Capture = styled.section`
@@ -44,6 +51,7 @@ const Capture = styled.section`
   overflow-wrap: break-word;
   text-align: left;
   background: white;
+  padding: 1rem;
 `
 
 const nonDisplay = "display: none;"
@@ -54,11 +62,18 @@ const ImgCreateBtn = styled.button<{$isPreview?: boolean}>`
   ${props => props.$isPreview ? btnColor : nonDisplay};
 `
 
+const MakeImageSectionWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  height: 90vh;
+  margin-top: 6rem;
+`
+
 const MakeImageSection = styled.section<{$isDownload?: boolean}>`
   width: 100%;
   min-height: 50%;
-  border: 0.3rem solid black;
-  border-radius: 1rem;
+
+
   ${props => props.$isDownload ? btnColor : nonDisplay};
 `
 
@@ -110,29 +125,33 @@ const Main = () => {
 
   return (
     <Wrapper>
-      <TextArea value={sentence} onChange={(e) => setSentence(e.target.value)} />
+      <SubWrapper>
+        <TextArea value={sentence} onChange={(e) => setSentence(e.target.value)} />
 
-      <button onClick={textContent}>プレビューを表示</button>
+        <button onClick={textContent}>プレビューを表示</button>
 
-      <button onClick={() => setSentence("")}>クリア</button>
+        <button onClick={() => setSentence("")}>クリア</button>
 
-      <Capture id='capture'>
-        {
-          imgSentence.map(s => {
-            return <>
-              {s}<br />
-            </>
-          })
-        }
-      </Capture>
+        <Capture id='capture'>
+          {
+            imgSentence.map(s => {
+              return <>
+                {s}<br />
+              </>
+            })
+          }
+        </Capture>
 
-      <ImgCreateBtn $isPreview={preview} onClick={createScreenshot}>画像にする</ImgCreateBtn>
+        <ImgCreateBtn $isPreview={preview} onClick={createScreenshot}>画像にする</ImgCreateBtn>
+      </SubWrapper>
 
-      <MakeImageSection id="make-image-section" $isDownload={download}>
-        <div id="image-space">
-          <img src="" id="created-image" alt='created-image' />
-        </div>    
-      </MakeImageSection>
+      <MakeImageSectionWrapper>
+        <MakeImageSection id="make-image-section" $isDownload={download}>
+          <div id="image-space">
+            <img src="" id="created-image" alt='created-image' />
+          </div>
+        </MakeImageSection>
+      </MakeImageSectionWrapper>
 
       <ImageDownloadButtonSection id="image-download-button-section"  $isDownload={download}>
         <a href="" id="image-download" download="screenshot">画像ダウンロード</a>

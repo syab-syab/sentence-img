@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/sentence-img/static/css/main.bb887869.css",
+    "main.js": "/sentence-img/static/js/main.e64595ec.js",
+    "static/js/453.18253257.chunk.js": "/sentence-img/static/js/453.18253257.chunk.js",
+    "index.html": "/sentence-img/index.html",
+    "main.bb887869.css.map": "/sentence-img/static/css/main.bb887869.css.map",
+    "main.e64595ec.js.map": "/sentence-img/static/js/main.e64595ec.js.map",
+    "453.18253257.chunk.js.map": "/sentence-img/static/js/453.18253257.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb887869.css",
+    "static/js/main.e64595ec.js"
+  ]
+}
